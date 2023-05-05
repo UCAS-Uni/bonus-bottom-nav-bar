@@ -13,20 +13,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
-  Color selectedColor = Color.fromRGBO(113, 196, 0, 1);
-  Color unselectedColor = Color(0xFFb9b9b9);
+  Color selectedColor = const Color.fromRGBO(113, 196, 0, 1);
+  Color unselectedColor = const Color(0xFFb9b9b9);
   TextStyle getStyle(int index) {
-    if (index == _selectedIndex) {
-      return TextStyle(
-        color: Color.fromRGBO(64, 117, 7, 1),
-        fontSize: 13,
-      );
-    } else {
-      return TextStyle(
-        color: Color(0xFFb9b9b9),
-        fontSize: 13,
-      );
-    }
+    return TextStyle(
+      color: index == _selectedIndex
+          ? const Color.fromRGBO(64, 117, 7, 1)
+          : const Color(0xFFb9b9b9),
+      fontSize: 13,
+    );
   }
 
   @override
@@ -37,23 +32,21 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Text(
             'Selected Tab: $_selectedIndex',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
             ),
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 237, 231, 248),
+        backgroundColor: const Color.fromARGB(255, 237, 231, 248),
         bottomNavigationBar: CustomBottomNavigationBar(
           borderRaduis: BorderRadius.zero,
-          domeCircleColor: Color.fromRGBO(216, 244, 181, 1),
+          domeCircleColor: const Color.fromRGBO(216, 244, 181, 1),
           selectedIndex: _selectedIndex,
           barColor: Colors.white,
           barHeight: 60,
           domeHeight: 30,
           domeWidth: 200,
           domeCircleSize: 60,
-
-          // margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           onTabChange: (clickedIndex) {
             setState(() {
               _selectedIndex = clickedIndex;
@@ -61,7 +54,7 @@ class _MyAppState extends State<MyApp> {
           },
           tabs: [
             CustomTab(
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
               ),
               selectedColor: selectedColor,
@@ -69,7 +62,7 @@ class _MyAppState extends State<MyApp> {
               title: Text('Home', style: getStyle(0)),
             ),
             CustomTab(
-              icon: Icon(
+              icon: const Icon(
                 Icons.location_on,
               ),
               selectedColor: selectedColor,
@@ -80,7 +73,7 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
             CustomTab(
-              icon: Icon(Icons.layers),
+              icon: const Icon(Icons.layers),
               title: Text('My Order', style: getStyle(2)),
               selectedColor: selectedColor,
               unselectedColor: unselectedColor,
