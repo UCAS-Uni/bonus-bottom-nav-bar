@@ -3,7 +3,7 @@ library molten_navigationbar_flutter;
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class MoltenBottomNavigationBar extends StatelessWidget {
+class CustomBottomNavigationBar extends StatelessWidget {
   /// specify a Height for the bar, Default is kBottomNavigationBarHeight
   final double barHeight;
 
@@ -30,7 +30,7 @@ class MoltenBottomNavigationBar extends StatelessWidget {
   final Color? barColor;
 
   /// List of [MoltenTab], each wil have an icon as the main widget, selcted color and unselected color
-  final List<MoltenTab> tabs;
+  final List<CustomTab> tabs;
 
   /// The currently selected tab
   final int selectedIndex;
@@ -61,7 +61,7 @@ class MoltenBottomNavigationBar extends StatelessWidget {
   ///
   /// Give an [onTabChange] callback to specify what will happen whenever a tab is selected.
   /// [tabs] are of type MoltenTab, use them to display selectable tabs.
-  MoltenBottomNavigationBar({
+  CustomBottomNavigationBar({
     Key? key,
     this.barHeight = kBottomNavigationBarHeight,
     this.barColor,
@@ -228,7 +228,7 @@ class MoltenBottomNavigationBar extends StatelessWidget {
 
 /// Wraps the [MoltenTab] with extra attributes.
 class _MoltenTabWrapper extends StatelessWidget {
-  final MoltenTab tab;
+  final CustomTab tab;
   final bool isSelected;
   final Function onTab;
   final double circleSize;
@@ -264,7 +264,7 @@ class _MoltenTabWrapper extends StatelessWidget {
   }
 }
 
-class MoltenTab {
+class CustomTab {
   /// Can be any [Widget].
   final Widget icon;
 
@@ -284,7 +284,7 @@ class MoltenTab {
   /// This represents each tab in the navigation bar.
   ///
   /// [icon] must not be null
-  MoltenTab({
+  CustomTab({
     required this.icon,
     this.selectedColor,
     this.title,

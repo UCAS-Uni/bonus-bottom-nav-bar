@@ -18,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   TextStyle getStyle(int index) {
     if (index == _selectedIndex) {
       return TextStyle(
-        color: Color.fromRGBO(113, 196, 0, 1),
+        color: Color.fromRGBO(64, 117, 7, 1),
         fontSize: 13,
       );
     } else {
@@ -43,12 +43,12 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         backgroundColor: Color.fromARGB(255, 237, 231, 248),
-        bottomNavigationBar: MoltenBottomNavigationBar(
+        bottomNavigationBar: CustomBottomNavigationBar(
           borderRaduis: BorderRadius.zero,
           domeCircleColor: Color.fromRGBO(216, 244, 181, 1),
           selectedIndex: _selectedIndex,
           barColor: Colors.white,
-          barHeight: 75,
+          barHeight: 60,
           domeHeight: 30,
           domeWidth: 200,
           domeCircleSize: 60,
@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
             });
           },
           tabs: [
-            MoltenTab(
+            CustomTab(
               icon: Icon(
                 Icons.home,
               ),
@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
               unselectedColor: unselectedColor,
               title: Text('Home', style: getStyle(0)),
             ),
-            MoltenTab(
+            CustomTab(
               icon: Icon(
                 Icons.location_on,
               ),
@@ -79,13 +79,13 @@ class _MyAppState extends State<MyApp> {
                 style: getStyle(1),
               ),
             ),
-            MoltenTab(
+            CustomTab(
               icon: Icon(Icons.stacked_bar_chart),
               title: Text('My Order', style: getStyle(2)),
               selectedColor: selectedColor,
               unselectedColor: unselectedColor,
             ),
-            MoltenTab(
+            CustomTab(
               icon: const Icon(Icons.call_outlined),
               selectedColor: selectedColor,
               unselectedColor: unselectedColor,
