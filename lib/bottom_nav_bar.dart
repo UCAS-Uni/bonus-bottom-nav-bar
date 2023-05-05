@@ -4,63 +4,25 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  /// specify a Height for the bar, Default is kBottomNavigationBarHeight
   final double barHeight;
-
-  /// specify a Height for the Dome above tabs, Default is 15.0
   final double domeHeight;
-
-  /// If [domeWidth] is null, it will be set to 100
   final double domeWidth;
-
-  /// If a null value is passed, the [domeCircleColor] will be Theme.primaryColor
   final Color? domeCircleColor;
 
-  /// The size of the inner circle representing a seleted tab
-  ///
-  /// Note that [domeCircleSize] must be less than or equal to (barHeight + domeHeight)
   final double domeCircleSize;
-
-  /// Spacing around the bar, Default is [EdgeInsets.zero]
   final EdgeInsets margin;
 
-  /// specify a color to be used as a background color, Default is Theme.bottomAppBarColor
-  ///
-  /// If the opacity is less than 1, it will automatically be 1
   final Color? barColor;
-
-  /// List of [MoltenTab], each wil have an icon as the main widget, selcted color and unselected color
   final List<CustomTab> tabs;
-
-  /// The currently selected tab
   final int selectedIndex;
-
-  /// A callback function that will be triggered whenever a [MoltenTab] is clicked, and will return it's index.
   final Function(int index) onTabChange;
-
-  /// Select a [Curve] value for the dome animation. Default is [Curves.linear]
   final Curve curve;
-
-  /// How long the animation should last, Default is Duration(milliseconds: 150)
   final Duration? duration;
-
-  /// Applied to all 4 border sides, Default is 0
   final double borderSize;
-
-  /// Applied to all border sides
   final Color? borderColor;
 
-  /// How much each angle is curved.
-  /// Default is: (topLeft: Radius.circular(10), topRight: Radius.circular(10))
-  ///
-  /// Note that high raduis values may decrease the dome width.
   final BorderRadius? borderRaduis;
 
-  /// An animated bottom navigation that makes your app looks better
-  /// with customizable attrinutes
-  ///
-  /// Give an [onTabChange] callback to specify what will happen whenever a tab is selected.
-  /// [tabs] are of type MoltenTab, use them to display selectable tabs.
   CustomBottomNavigationBar({
     Key? key,
     this.barHeight = kBottomNavigationBarHeight,
@@ -79,25 +41,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
     this.borderSize = 0,
     this.borderRaduis,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       final _borderRaduis = borderRaduis ??
           BorderRadius.only(
               topLeft: Radius.circular(10), topRight: Radius.circular(10));
-
       final Color _barColor =
           (barColor?.withOpacity(1)) ?? Theme.of(context).colorScheme.surface;
-
       final Color _domeCircleColor = (domeCircleColor?.withOpacity(1)) ??
           Theme.of(context).colorScheme.primary;
-
       final double _tabWidth =
           (constraints.biggest.width - margin.horizontal) / tabs.length;
-
       final double _domeWidth = min(domeWidth, _tabWidth);
-
       assert(domeCircleSize <= (barHeight + domeHeight),
           'domeCircleSize must be less than or equal to (barHeight + domeHeight)');
       final selectedTab = tabs[selectedIndex];
@@ -221,12 +177,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
       newPos = x - borderSize;
     else
       newPos = x;
-
     return newPos;
   }
 }
 
-/// Wraps the [MoltenTab] with extra attributes.
 class _MoltenTabWrapper extends StatelessWidget {
   final CustomTab tab;
   final bool isSelected;
@@ -265,25 +219,13 @@ class _MoltenTabWrapper extends StatelessWidget {
 }
 
 class CustomTab {
-  /// Can be any [Widget].
   final Widget icon;
-
-  /// title when tab is selected
   final Widget? title;
 
-  /// The [icon] color when the tab is selected
-  ///
-  /// White if not set
   final Color? selectedColor;
 
-  /// The [icon] color when the tab is unselected
-  ///
-  /// Grey if not set
   final Color? unselectedColor;
 
-  /// This represents each tab in the navigation bar.
-  ///
-  /// [icon] must not be null
   CustomTab({
     required this.icon,
     this.selectedColor,
@@ -301,7 +243,6 @@ class _MoltenDome extends StatelessWidget {
     required this.height,
     required this.width,
   });
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -320,7 +261,6 @@ class _DomePainter extends CustomPainter {
   _DomePainter({
     required this.color,
   });
-
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint();
