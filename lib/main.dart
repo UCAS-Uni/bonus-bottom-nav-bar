@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
+
+import 'bottom_nav_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,21 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
+  Color selectedColor = Color.fromRGBO(113, 196, 0, 1);
+  Color unselectedColor = Color(0xFFb9b9b9);
+  TextStyle getStyle(int index) {
+    if (index == _selectedIndex) {
+      return TextStyle(
+        color: Color.fromRGBO(113, 196, 0, 1),
+        fontSize: 13,
+      );
+    } else {
+      return TextStyle(
+        color: Color(0xFFb9b9b9),
+        fontSize: 13,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +48,12 @@ class _MyAppState extends State<MyApp> {
           domeCircleColor: Color.fromRGBO(216, 244, 181, 1),
           selectedIndex: _selectedIndex,
           barColor: Colors.white,
-          domeHeight: 25,
+          barHeight: 75,
+          domeHeight: 30,
+          domeWidth: 200,
+          domeCircleSize: 60,
+
+          // margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           onTabChange: (clickedIndex) {
             setState(() {
               _selectedIndex = clickedIndex;
@@ -42,24 +63,33 @@ class _MyAppState extends State<MyApp> {
             MoltenTab(
               icon: Icon(
                 Icons.home,
-                color: Color.fromRGBO(113, 196, 0, 1),
               ),
-              title: Text('Home'),
+              selectedColor: selectedColor,
+              unselectedColor: unselectedColor,
+              title: Text('Home', style: getStyle(0)),
             ),
             MoltenTab(
-              icon: Icon(Icons.location_on),
-              selectedColor: Colors.lightGreenAccent,
-              title: Text('Address'),
+              icon: Icon(
+                Icons.location_on,
+              ),
+              selectedColor: selectedColor,
+              unselectedColor: unselectedColor,
+              title: Text(
+                'Address',
+                style: getStyle(1),
+              ),
             ),
             MoltenTab(
               icon: Icon(Icons.stacked_bar_chart),
-              title: Text('My Order'),
-              selectedColor: Colors.lightGreenAccent,
+              title: Text('My Order', style: getStyle(2)),
+              selectedColor: selectedColor,
+              unselectedColor: unselectedColor,
             ),
             MoltenTab(
-              icon: Icon(Icons.call_outlined),
-              selectedColor: Colors.lightGreenAccent,
-              title: Text('Contact Us'),
+              icon: const Icon(Icons.call_outlined),
+              selectedColor: selectedColor,
+              unselectedColor: unselectedColor,
+              title: Text('Contact Us', style: getStyle(3)),
             ),
           ],
         ),
