@@ -80,13 +80,13 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
             CustomTab(
-              icon: Icon(Icons.stacked_bar_chart),
+              icon: Icon(Icons.layers),
               title: Text('My Order', style: getStyle(2)),
               selectedColor: selectedColor,
               unselectedColor: unselectedColor,
             ),
             CustomTab(
-              icon: const Icon(Icons.call_outlined),
+              icon: const Icon(Icons.wifi_calling_3),
               selectedColor: selectedColor,
               unselectedColor: unselectedColor,
               title: Text('Contact Us', style: getStyle(3)),
