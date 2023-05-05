@@ -76,7 +76,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
               ),
             ),
-            // border for the dome
             _animatedPositionedDome(
               top: 0,
               tabWidth: _tabWidth,
@@ -85,7 +84,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
               domeColor:
                   borderSize > 0 ? (borderColor ?? _barColor) : _barColor,
             ),
-            // Actual dome
             _animatedPositionedDome(
               top: borderSize < 1 ? 1 : (borderSize + 0.2),
               tabWidth: _tabWidth,
@@ -131,7 +129,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                         circleSize: domeCircleSize,
                       ),
                     ),
-                    // const SizedBox(height: 8),
                     title!,
                   ],
                 ),
