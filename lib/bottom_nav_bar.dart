@@ -1,5 +1,3 @@
-library molten_navigationbar_flutter;
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 
